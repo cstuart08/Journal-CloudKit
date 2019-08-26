@@ -18,8 +18,8 @@ struct EntryConstants {
 
 class Entry {
     
-    let title: String
-    let body: String
+    var title: String
+    var body: String
     let timestamp: Date
     let ckRecordID: CKRecord.ID
     
@@ -46,5 +46,11 @@ extension Entry {
         let entryBody = ckRecord[EntryConstants.BodyKey] as? String,
         let entryTimestamp = ckRecord[EntryConstants.TimestampKey] as? Date else { return nil }
         self.init(title: entryTitle, body: entryBody, timestamp: entryTimestamp, ckRecordID: ckRecord.recordID)
+    }
+}
+
+extension Entry: Equatable {
+    static func == (lhs: Entry, rhs: Entry) -> Bool {
+       return lhs.title == rhs.title && lhs.timestamp == rhs.timestamp && lhs.body == rhs.body && lhs.ckRecordID == rhs.ckRecordID
     }
 }

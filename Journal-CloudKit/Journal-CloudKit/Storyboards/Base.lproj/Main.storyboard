@@ -13,13 +13,13 @@
         <!--Journal Entries-->
         <scene sceneID="zC4-qw-t0T">
             <objects>
-                <tableViewController id="St8-z5-D8M" sceneMemberID="viewController">
+                <tableViewController id="St8-z5-D8M" customClass="EntriesListTableViewController" customModule="Journal_CloudKit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GIl-rV-ndU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="CAW-wK-57w" detailTextLabel="6zA-ZB-FJd" rowHeight="50" style="IBUITableViewCellStyleValue1" id="zBf-LC-JgO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="entriesCell" textLabel="CAW-wK-57w" detailTextLabel="6zA-ZB-FJd" rowHeight="50" style="IBUITableViewCellStyleValue1" id="zBf-LC-JgO">
                                 <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zBf-LC-JgO" id="pge-M3-2p7">
@@ -43,7 +43,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="z2s-1G-DTk" kind="show" id="b2a-gK-MlQ"/>
+                                    <segue destination="z2s-1G-DTk" kind="show" identifier="cellToDetail" id="b2a-gK-MlQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,18 +67,80 @@
         <!--Entry-->
         <scene sceneID="o2z-J5-sW1">
             <objects>
-                <viewController id="z2s-1G-DTk" sceneMemberID="viewController">
+                <viewController id="z2s-1G-DTk" customClass="EntryViewController" customModule="Journal_CloudKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uK9-Pu-2Kx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q8u-BK-puj">
+                                <rect key="frame" x="5" y="108" width="404" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sFc-dY-tfC"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wx7-52-43I">
+                                <rect key="frame" x="5" y="178" width="404" height="599"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLZ-IL-cDX">
+                                <rect key="frame" x="5" y="797" width="404" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.6048771621413267" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="25P-8M-rmK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="Clear All Fields">
+                                    <color key="titleColor" red="1" green="0.99992221510000001" blue="0.97146217229999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearAllButtonTapped:" destination="z2s-1G-DTk" eventType="touchUpInside" id="teh-SJ-A3g"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="CLZ-IL-cDX" firstAttribute="top" secondItem="wx7-52-43I" secondAttribute="bottom" constant="20" id="Bzj-8M-3v9"/>
+                            <constraint firstItem="wx7-52-43I" firstAttribute="leading" secondItem="cbZ-8Q-qH7" secondAttribute="leading" constant="5" id="DJ3-mS-JGk"/>
+                            <constraint firstItem="cbZ-8Q-qH7" firstAttribute="bottom" secondItem="CLZ-IL-cDX" secondAttribute="bottom" constant="15" id="ECo-PU-AI4"/>
+                            <constraint firstItem="cbZ-8Q-qH7" firstAttribute="trailing" secondItem="Q8u-BK-puj" secondAttribute="trailing" constant="5" id="SNl-7J-2mN"/>
+                            <constraint firstItem="cbZ-8Q-qH7" firstAttribute="trailing" secondItem="CLZ-IL-cDX" secondAttribute="trailing" constant="5" id="SRP-Ru-2X3"/>
+                            <constraint firstItem="wx7-52-43I" firstAttribute="top" secondItem="Q8u-BK-puj" secondAttribute="bottom" constant="20" id="T6U-lX-y3A"/>
+                            <constraint firstItem="CLZ-IL-cDX" firstAttribute="leading" secondItem="cbZ-8Q-qH7" secondAttribute="leading" constant="5" id="YfG-26-9IG"/>
+                            <constraint firstItem="Q8u-BK-puj" firstAttribute="leading" secondItem="cbZ-8Q-qH7" secondAttribute="leading" constant="5" id="ZCN-4j-2ev"/>
+                            <constraint firstItem="cbZ-8Q-qH7" firstAttribute="trailing" secondItem="wx7-52-43I" secondAttribute="trailing" constant="5" id="g6f-Iu-1u9"/>
+                            <constraint firstItem="CLZ-IL-cDX" firstAttribute="top" secondItem="wx7-52-43I" secondAttribute="bottom" constant="20" id="nsW-vW-z86"/>
+                            <constraint firstItem="Q8u-BK-puj" firstAttribute="top" secondItem="cbZ-8Q-qH7" secondAttribute="top" constant="20" id="p5T-Kw-ivO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cbZ-8Q-qH7"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Y2X-9z-mGK" appends="YES" id="Pj5-rI-k7q"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Entry" id="WIF-C5-522">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0nE-UD-s7y"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0nE-UD-s7y">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="z2s-1G-DTk" id="qIh-d9-Fy0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="wx7-52-43I" id="s1z-tG-0FR"/>
+                        <outlet property="titleTextField" destination="Q8u-BK-puj" id="DTX-DF-w61"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Txm-sF-psg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Y2X-9z-mGK">
+                    <connections>
+                        <action selector="mainViewTapped:" destination="z2s-1G-DTk" id="gy4-7e-EvR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="657" y="155"/>
         </scene>
