@@ -12,6 +12,7 @@
 		D41289C8231468E600D52E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D41289C7231468E600D52E51 /* Assets.xcassets */; };
 		D41289CB231468E600D52E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41289C9231468E600D52E51 /* LaunchScreen.storyboard */; };
 		D41289D52314690700D52E51 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41289D42314690700D52E51 /* CloudKit.framework */; };
+		D41289DC23146A4100D52E51 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41289DB23146A4100D52E51 /* Entry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		D41289CC231468E600D52E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D41289D22314690400D52E51 /* Journal-CloudKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Journal-CloudKit.entitlements"; sourceTree = "<group>"; };
 		D41289D42314690700D52E51 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D41289DB23146A4100D52E51 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +63,8 @@
 				D41289D92314693F00D52E51 /* Models */,
 				D41289D82314693400D52E51 /* Model Controllers */,
 				D41289D72314692C00D52E51 /* View Controllers */,
-				D41289D22314690400D52E51 /* Journal-CloudKit.entitlements */,
 				D41289D62314691D00D52E51 /* Resources */,
+				D41289D22314690400D52E51 /* Journal-CloudKit.entitlements */,
 			);
 			path = "Journal-CloudKit";
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 		D41289D92314693F00D52E51 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D41289DB23146A4100D52E51 /* Entry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41289DC23146A4100D52E51 /* Entry.swift in Sources */,
 				D41289C1231468E500D52E51 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,7 +347,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Journal-CloudKit/Journal-CloudKit.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTDCPCY5V;
-				INFOPLIST_FILE = "Journal-CloudKit/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Journal-CloudKit/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +366,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Journal-CloudKit/Journal-CloudKit.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTDCPCY5V;
-				INFOPLIST_FILE = "Journal-CloudKit/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Journal-CloudKit/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
