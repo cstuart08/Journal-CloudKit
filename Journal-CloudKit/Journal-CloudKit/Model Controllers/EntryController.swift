@@ -83,6 +83,8 @@ class EntryController {
     // Delete
     
     func deleteEntries(entry: Entry, completion: @escaping (Bool) -> Void) {
+        guard let index = self.entries.firstIndex(of: entry) else { completion(false); return }
+        self.entries.remove(at: index)
         let entryRecord = CKRecord(entry: entry)
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [entryRecord.recordID])
         //operation.savePolicy = .allKeys
@@ -92,8 +94,6 @@ class EntryController {
                 completion(false)
                 return
             }
-            guard let index = self.entries.firstIndex(of: entry) else { completion(false); return }
-            self.entries.remove(at: index)
         completion(true)
         }
         self.publicDB.add(operation)
